@@ -129,6 +129,197 @@ This project is a Java-based graphical user interface (GUI) that allows users to
 └── README.md
 ```
 
+## **9. Code Explanation**
+
+The code in this project is divided into multiple Java classes that handle different data structures and their operations. Below is a breakdown of each class and its components.
+
+### **1. HomePage.java**
+The `HomePage` class is the entry point of the application. It initializes the main GUI window and provides buttons for users to access different data structures (array, stack, queue, binary tree, etc.).
+
+#### Key Components:
+- **JFrame**: The main window of the application.
+- **JButton**: Buttons for each data structure that the user can click to open the respective data structure's operation window.
+- **ActionListener**: The event listeners are attached to each button. When clicked, the corresponding `display()` method from other classes is called.
+
+#### Functionality:
+- **Display Buttons**: The buttons for different data structures are added to the `JFrame` with a vertical layout (`BoxLayout`).
+- **Action Listeners**: Each button triggers the display of the corresponding data structure’s operations window. For example, clicking the "Binary Tree" button opens the `BinaryTree` class's GUI.
+
+### **2. BinaryTree.java**
+This class manages the binary tree operations like adding nodes, traversing the tree, and deleting nodes.
+
+#### Key Components:
+- **Node Class**: A nested static class representing each node in the binary tree. Each node contains an integer data and references to its left and right children.
+- **addNode()**: Adds a new node with a given value to the binary tree. It uses recursion to find the correct position for the new node.
+- **inorderTraversal()**: Performs an in-order traversal (left subtree, root, right subtree) of the binary tree.
+- **preorderTraversal()**: Performs a pre-order traversal (root, left subtree, right subtree) of the binary tree.
+- **postorderTraversal()**: Performs a post-order traversal (left subtree, right subtree, root) of the binary tree.
+- **deleteNode()**: Deletes a node with a given key from the binary tree, following the binary search tree (BST) deletion rules.
+- **searchNode()**: Searches for a node with a given value in the binary tree.
+
+#### Example Code:
+```java
+public static String inorderTraversal(Node node) {
+    if (node == null) return "";
+    return inorderTraversal(node.left) + " " + node.data + " " + inorderTraversal(node.right);
+}
+```
+This method recursively traverses the tree in an in-order manner and returns a string of values from the traversal.
+
+### **3. Queue.java**
+The `Queue` class implements basic queue operations using a `LinkedList`.
+
+#### Key Components:
+- **enqueue()**: Adds an element to the queue.
+- **dequeue()**: Removes and returns the element at the front of the queue.
+- **display()**: Displays the current elements in the queue.
+
+#### Example Code:
+```java
+public static void enqueue(int value) {
+    queue.add(value); // Adds value to the end of the queue
+}
+```
+
+### **4. Stack.java**
+The `Stack` class implements basic stack operations using a `LinkedList`.
+
+#### Key Components:
+- **push()**: Adds an element to the top of the stack.
+- **pop()**: Removes and returns the element at the top of the stack.
+- **peek()**: Returns the top element without removing it.
+- **display()**: Displays the current stack contents.
+
+#### Example Code:
+```java
+public static void push(int value) {
+    stack.push(value); // Pushes value onto the stack
+}
+```
+
+### **5. CircularQueue.java**
+The `CircularQueue` class implements a queue with a circular buffer.
+
+#### Key Components:
+- **enqueue()**: Adds an element to the queue, wrapping around when the queue is full.
+- **dequeue()**: Removes and returns the front element from the queue.
+- **display()**: Displays the current elements in the queue.
+
+#### Example Code:
+```java
+public static void enqueue(int value) {
+    if ((rear + 1) % size == front) {
+        System.out.println("Queue is full");
+    } else {
+        rear = (rear + 1) % size;
+        queue[rear] = value;
+    }
+}
+```
+
+### **6. LinkedList.java**
+The `LinkedList` class implements basic operations on a singly linked list.
+
+#### Key Components:
+- **add()**: Adds a new node at the end of the list.
+- **remove()**: Removes a node from the list.
+- **traverse()**: Traverses and prints the elements in the list.
+
+#### Example Code:
+```java
+public static void add(int value) {
+    Node newNode = new Node(value);
+    if (head == null) {
+        head = newNode;
+    } else {
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+}
+```
+
+### **7. DoublyLinkedList.java**
+The `DoublyLinkedList` class implements operations on a doubly linked list where each node has references to both the next and previous nodes.
+
+#### Key Components:
+- **add()**: Adds a node to the end of the doubly linked list.
+- **remove()**: Removes a node from the list.
+- **traverse()**: Traverses the list forward and backward.
+
+#### Example Code:
+```java
+public static void add(int value) {
+    Node newNode = new Node(value);
+    if (head == null) {
+        head = newNode;
+    } else {
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+}
+```
+
+### **8. TreeMapExample.java**
+This class demonstrates operations on a `TreeMap`, which is a map that keeps the keys sorted.
+
+#### Key Components:
+- **put()**: Adds a key-value pair to the `TreeMap`.
+- **remove()**: Removes a key-value pair from the `TreeMap`.
+- **display()**: Displays all the key-value pairs in the map.
+
+#### Example Code:
+```java
+public static void put(int key, String value) {
+    treeMap.put(key, value); // Adds key-value pair
+}
+```
+
+### **9. HashMapExample.java**
+This class demonstrates operations on a `HashMap`, which allows storing key-value pairs but does not guarantee order.
+
+#### Key Components:
+- **put()**: Adds a key-value pair to the `HashMap`.
+- **remove()**: Removes a key-value pair from the `HashMap`.
+- **display()**: Displays all the key-value pairs in the map.
+
+#### Example Code:
+```java
+public static void put(int key, String value) {
+    hashMap.put(key, value); // Adds key-value pair
+}
+```
+
+### **10. Node.java**
+The `Node` class is used across multiple data structures like linked lists and binary trees to represent the individual elements or nodes.
+
+#### Key Components:
+- **data**: The value stored in the node.
+- **next**: The reference to the next node (used in linked lists).
+- **prev**: The reference to the previous node (used in doubly linked lists).
+- **left** and **right**: References to the left and right children (used in binary trees).
+
+#### Example Code:
+```java
+static class Node {
+    int data;
+    Node left, right;
+    Node next, prev;
+
+    Node(int data) {
+        this.data = data;
+        this.left = this.right = this.next = this.prev = null;
+    }
+}
+```
+---
+
 ## **10. Code Snippets**
 
 In this section, I’ll provide essential code snippets that are fundamental to the implementation of the various data structures in your project. These snippets demonstrate key methods for handling operations like adding, removing, traversing, and displaying elements for different data structures such as Binary Trees, Linked Lists, and TreeMaps.
